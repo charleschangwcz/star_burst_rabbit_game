@@ -126,7 +126,7 @@ def draw_dinit(sco):
     screen.blit(owada_img,(0,0))
     draw_text(screen,'結束...了嗎',50,WIDTH/2,HEIGHT/4-80)
     draw_text(screen,'狩獵雜燴兔%d'%(sco)+'隻',30,WIDTH/2,HEIGHT/2-80)
-    draw_text(screen,'按任意鍵繼續',28,WIDTH/2,HEIGHT*3/4-150)
+    draw_text(screen,'按W鍵繼續',28,WIDTH/2,HEIGHT*3/4-150)
     pygame.display.update()
     owada_sound.play()
     waiting=True
@@ -137,8 +137,9 @@ def draw_dinit(sco):
                 pygame.quit()
                 return True
             elif event.type==pygame.KEYUP:
-                waiting=False
-                return False
+                if event.key==pygame.K_w:
+                    waiting=False
+                    return False
 
 #玩家
 class Player(pygame.sprite.Sprite):#繼承內建的sprite類別
